@@ -109,7 +109,7 @@ public class PlayerMovementManager : MonoBehaviour
 
 
         //direction = direction.ProjectOntoPlane(_averageGroundNormal);
-        direction = Vector3.Cross(direction, -Vector3.up);
+        direction = Vector3.Cross(direction, -_averageGroundNormal);
 
         Debug.DrawRay(transform.position, direction, Color.red);
 
@@ -118,9 +118,18 @@ public class PlayerMovementManager : MonoBehaviour
 
     public bool CheckGrounded()
     {
-        if (Physics.CheckSphere(transform.position, _groundDetectionRadius, _groundMask))
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _groundDetectionRadius, _groundMask);
+
+        if (colliders.Length > 0)
         {
-            _rigidbody.useGravity = false;
+            foreach (Collider collider in colliders)
+            {
+                if (collider.gameObject.layer == 6)
+                {
+                    _rigidbody.useGravity = false;
+                }
+            }
+
             return true;
         }
 

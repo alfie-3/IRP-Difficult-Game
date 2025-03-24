@@ -197,7 +197,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 65
-  _groundDetectionRadius: 0.5
+  _groundDetectionRadius: 0.52
   _playerParameters: {fileID: 11400000, guid: 4c99f4c1007072c46a1212d61a2da949, type: 2}
   _puffed: 0
 --- !u!114 &6760030150150445635
