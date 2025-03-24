@@ -1,4 +1,5 @@
 using Cinemachine.Utility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,6 @@ public class PlayerMovementManager : MonoBehaviour
     private PlayerInputController _playerInput;
     private PlayerCameraManager _cameraManager;
     private Rigidbody _rigidbody;
-    private SphereCollider _sphereCollider;
 
     private BasePlayerMovementState _currentState;
 
@@ -28,12 +28,13 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] PlayerParameters _playerParameters;
     [SerializeField] bool _puffed;
 
+    public Action<bool> OnPuffedChanged;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInputController>();
         _rigidbody = GetComponent<Rigidbody>();
         _cameraManager = GetComponent<PlayerCameraManager>();
-        _sphereCollider = GetComponent<SphereCollider>();
 
         PlayerMovementStateContext context = new(this, _playerInput, _cameraManager);
 
@@ -43,6 +44,8 @@ public class PlayerMovementManager : MonoBehaviour
         _currentState = _fishMovement;
 
         _playerInput.PuffedPerformed += TogglePuff;
+
+        OnPuffedChanged.Invoke(_puffed);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -59,7 +62,11 @@ public class PlayerMovementManager : MonoBehaviour
         contactsAverage.Normalize();
         
         _averageGroundNormal = contactsAverage;
-        _rigidbody.AddForce(-_averageGroundNormal * _playerParameters.StickStrength, ForceMode.Acceleration);
+
+        if (_puffed)
+        {
+            _rigidbody.AddForce(-_averageGroundNormal * _playerParameters.StickStrength, ForceMode.Acceleration);
+        }
     }
 
     public void TogglePuff(InputAction.CallbackContext context) {
@@ -67,11 +74,13 @@ public class PlayerMovementManager : MonoBehaviour
         {
             _puffed = false;
             SwitchState(_fishMovement);
+            OnPuffedChanged.Invoke(_puffed);
         }
         else
         {
             _puffed = true;
             SwitchState(_puffedMovement);
+            OnPuffedChanged.Invoke(_puffed);
         }
     }
 
@@ -124,9 +133,13 @@ public class PlayerMovementManager : MonoBehaviour
         {
             foreach (Collider collider in colliders)
             {
-                if (collider.gameObject.layer == 6)
+                if (collider.gameObject.layer == 6 && _puffed)
                 {
                     _rigidbody.useGravity = false;
+                }
+                else
+                {
+                    _rigidbody.useGravity = true;
                 }
             }
 
