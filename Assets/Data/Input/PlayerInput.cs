@@ -28,141 +28,106 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""a2231c65-5297-460c-8901-be3970a29408"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Steer"",
                     ""type"": ""PassThrough"",
                     ""id"": ""fdf2d02a-3bd0-4090-b90e-9d392506c74f"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""7b360a38-d2f8-40d5-86de-35d2ab21006b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Puff"",
+                    ""name"": ""Accelerate"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""a0fc4db7-4064-40b0-b0f0-aac1590f261b"",
+                    ""id"": ""63cddc09-10b2-4f1d-bdae-798875bb8ab5"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""0b9029da-9454-4e6a-8972-e35b6565b355"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Handbrake"",
+                    ""type"": ""Value"",
+                    ""id"": ""83887222-0e5b-4a07-a01a-03d04ea24f28"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""c1adc583-e57c-484d-aefc-979a01f5cc33"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2ceae589-25aa-4b08-b536-e73cbde6f08f"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""KeyboardMovement"",
-                    ""id"": ""f12dd8ca-9903-49d2-9e09-965395301324"",
-                    ""path"": ""2DVector"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6f223834-af25-4e4a-9483-7a9789c09277"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Steer"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""d02c94fd-b9f8-47f0-8ece-1b8f79b6f313"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""c488e267-9733-4f33-bc59-36e7f2e06a75"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""b3e19a4d-32e6-4d74-99bd-53d6a30206cb"",
+                    ""name"": ""negative"",
+                    ""id"": ""e7ef0039-9672-4b41-81a8-dd514853f613"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""fae54ab7-4a05-4498-b641-745c46e07d58"",
+                    ""name"": ""positive"",
+                    ""id"": ""b6078958-e4fd-485c-95d0-d42e9a62efbf"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0d9b4d7e-78b9-4867-bf7c-60778af520ad"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""id"": ""2d3c6be7-d071-45b2-8834-70f580194976"",
+                    ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Move"",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""53213dde-9f9a-42e1-9a40-e3620d36bc2f"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""id"": ""f12a4355-7b3e-4cee-a10d-c3f146fe40c5"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Puff"",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f1441202-19e9-492e-b0e8-fd5e970a7255"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""id"": ""ea53728f-04c0-40b1-99b4-ccf5ba7813b8"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Puff"",
+                    ""action"": ""Handbrake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -201,9 +166,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 }");
         // Default
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
-        m_Default_Move = m_Default.FindAction("Move", throwIfNotFound: true);
-        m_Default_Jump = m_Default.FindAction("Jump", throwIfNotFound: true);
-        m_Default_Puff = m_Default.FindAction("Puff", throwIfNotFound: true);
+        m_Default_Steer = m_Default.FindAction("Steer", throwIfNotFound: true);
+        m_Default_Accelerate = m_Default.FindAction("Accelerate", throwIfNotFound: true);
+        m_Default_Brake = m_Default.FindAction("Brake", throwIfNotFound: true);
+        m_Default_Handbrake = m_Default.FindAction("Handbrake", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,16 +231,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // Default
     private readonly InputActionMap m_Default;
     private List<IDefaultActions> m_DefaultActionsCallbackInterfaces = new List<IDefaultActions>();
-    private readonly InputAction m_Default_Move;
-    private readonly InputAction m_Default_Jump;
-    private readonly InputAction m_Default_Puff;
+    private readonly InputAction m_Default_Steer;
+    private readonly InputAction m_Default_Accelerate;
+    private readonly InputAction m_Default_Brake;
+    private readonly InputAction m_Default_Handbrake;
     public struct DefaultActions
     {
         private @PlayerInput m_Wrapper;
         public DefaultActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Default_Move;
-        public InputAction @Jump => m_Wrapper.m_Default_Jump;
-        public InputAction @Puff => m_Wrapper.m_Default_Puff;
+        public InputAction @Steer => m_Wrapper.m_Default_Steer;
+        public InputAction @Accelerate => m_Wrapper.m_Default_Accelerate;
+        public InputAction @Brake => m_Wrapper.m_Default_Brake;
+        public InputAction @Handbrake => m_Wrapper.m_Default_Handbrake;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,28 +252,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_DefaultActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_DefaultActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Puff.started += instance.OnPuff;
-            @Puff.performed += instance.OnPuff;
-            @Puff.canceled += instance.OnPuff;
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
+            @Accelerate.started += instance.OnAccelerate;
+            @Accelerate.performed += instance.OnAccelerate;
+            @Accelerate.canceled += instance.OnAccelerate;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+            @Handbrake.started += instance.OnHandbrake;
+            @Handbrake.performed += instance.OnHandbrake;
+            @Handbrake.canceled += instance.OnHandbrake;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Puff.started -= instance.OnPuff;
-            @Puff.performed -= instance.OnPuff;
-            @Puff.canceled -= instance.OnPuff;
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
+            @Accelerate.started -= instance.OnAccelerate;
+            @Accelerate.performed -= instance.OnAccelerate;
+            @Accelerate.canceled -= instance.OnAccelerate;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+            @Handbrake.started -= instance.OnHandbrake;
+            @Handbrake.performed -= instance.OnHandbrake;
+            @Handbrake.canceled -= instance.OnHandbrake;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -343,8 +317,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface IDefaultActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnPuff(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
+        void OnHandbrake(InputAction.CallbackContext context);
     }
 }

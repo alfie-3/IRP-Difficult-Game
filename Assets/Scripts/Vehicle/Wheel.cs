@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Wheel : MonoBehaviour
+{
+    [SerializeField] WheelCollider wheelCollider;
+    [SerializeField] GameObject wheelMesh;
+    [Space]
+    [field: SerializeField] public bool Drive;
+    [field: SerializeField] public bool Steering;
+
+    Quaternion startingWheelOffset;
+
+    private void Awake()
+    {
+        startingWheelOffset = wheelMesh.transform.rotation;
+    }
+
+    void Update()
+    {
+        UpdateWheelMesh();
+    }
+
+    public void UpdateWheelMesh()
+    {
+        Vector3 position;
+        Quaternion rotation;
+
+        wheelCollider.GetWorldPose(out position, out rotation);
+
+        rotation *= startingWheelOffset;
+
+        wheelMesh.transform.SetPositionAndRotation(position, rotation);
+    }
+
+    public void ProvideMotorTorque(float force)
+    {
+        wheelCollider.motorTorque = force;
+    }
+
+    public void ProvideBrakeTorque(float force)
+    {
+        wheelCollider.brakeTorque = force;
+    }
+
+    public void ProvideHandbrake(bool value)
+    {
+        if (value)
+        {
+            wheelCollider.brakeTorque = 2000;
+        }
+        else
+        {
+            wheelCollider.brakeTorque = 0;
+        }
+    }
+
+    public void ProvideSteering(float steeringAngle)
+    {
+        float turnAngle = steeringAngle;
+        wheelCollider.steerAngle = turnAngle;
+    }
+}
