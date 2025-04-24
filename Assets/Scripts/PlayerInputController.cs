@@ -26,8 +26,6 @@ public class PlayerInputController : MonoBehaviour
 
         _playerInput.Default.Handbrake.started += OnHandbrake;
         _playerInput.Default.Handbrake.canceled += OnHandbrake;
-
-        CursorUtils.LockAndHideCusor();
     }
 
     public void Update()
