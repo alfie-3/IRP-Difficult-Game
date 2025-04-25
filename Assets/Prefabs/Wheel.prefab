@@ -194,7 +194,7 @@ WheelCollider:
     m_ExtremumValue: 1.6
     m_AsymptoteSlip: 0.2
     m_AsymptoteValue: 1.2
-    m_Stiffness: 1
+    m_Stiffness: 1.6
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

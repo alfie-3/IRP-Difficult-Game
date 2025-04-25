@@ -35,7 +35,7 @@ public class WheelsController : MonoBehaviour
     {
         foreach (var wheel in Wheels)
         {
-            if (!wheel.Drive) continue;
+            if (wheel.Steering) continue;
 
             handBrake = value;
             wheel.ProvideHandbrake(value);

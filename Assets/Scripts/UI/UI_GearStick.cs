@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler
+public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] UI_ShifterHandler shifter;
+
+    bool grabbed = false;
+
+    UI_GearshiftMovementConnector targetPos;
 
     Vector2 offset;
 
@@ -12,8 +16,22 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler
     CanvasScaler MainCanvasScaler => transform.root.GetComponent<CanvasScaler>();
     RectTransform RectTransform => (RectTransform)transform;
 
+    private void Update()
+    {
+        if (!grabbed && targetPos != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPos.transform.position, 10 * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, targetPos.transform.position) < 10f)
+            {
+                targetPos = targetPos.NextPosition;
+            }
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        grabbed = true;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(RectTransform, eventData.position, eventData.pressEventCamera, out offset);
     }
 
@@ -27,5 +45,15 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler
 
         if (closestPoint != Vector3.zero)
             RectTransform.transform.position = closestPoint;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        grabbed = false;
+        GearstickAnchor anchor = shifter.CurrentAnchor;
+
+        targetPos = anchor.Start.GetComponent<UI_GearshiftMovementConnector>();
+
+        
     }
 }

@@ -8,7 +8,7 @@ public class UI_ShifterHandler : MonoBehaviour
     [SerializeField] GearstickAnchor[] GearstickAnchors;
 
     [SerializeField] int currentAnchorIndex;
-    GearstickAnchor currentAnchor => GearstickAnchors[currentAnchorIndex];
+    public GearstickAnchor CurrentAnchor => GearstickAnchors[currentAnchorIndex];
 
     [SerializeField] CarInterface carInterface;
 
@@ -21,9 +21,9 @@ public class UI_ShifterHandler : MonoBehaviour
         float currentDistance;
         Vector3 currentPoint;
 
-        for (int i = 0; i < currentAnchor.ConnectedAnchors.Length; i++)
+        for (int i = 0; i < CurrentAnchor.ConnectedAnchors.Length; i++)
         {
-            GearstickAnchor anchor = GearstickAnchors[currentAnchor.ConnectedAnchors[i]];
+            GearstickAnchor anchor = GearstickAnchors[CurrentAnchor.ConnectedAnchors[i]];
 
             currentPoint = PointOnLine(anchor.Start.position, anchor.End.position, point);
 
@@ -36,7 +36,7 @@ public class UI_ShifterHandler : MonoBehaviour
 
             if (currentDistance < closestDistance)
             {
-                selectedAnchorIndex = currentAnchor.ConnectedAnchors[i];
+                selectedAnchorIndex = CurrentAnchor.ConnectedAnchors[i];
                 closestDistance = currentDistance;
                 closestPoint = currentPoint;
             }
@@ -72,7 +72,7 @@ public class UI_ShifterHandler : MonoBehaviour
         {
             if (GearstickAnchors[i].Start == null || GearstickAnchors[i].End == null) continue;
 
-            if (currentAnchor.ConnectedAnchors.Contains(i))
+            if (CurrentAnchor.ConnectedAnchors.Contains(i))
             {
                 Gizmos.color = Color.green;
             }
