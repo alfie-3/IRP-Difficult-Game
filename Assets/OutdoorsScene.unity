@@ -4604,6 +4604,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCar
       objectReference: {fileID: 0}
+    - target: {fileID: 2306514556434661707, guid: 81c0b8f016b498f4985d3b041d5a90a5,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462365335980541284, guid: 81c0b8f016b498f4985d3b041d5a90a5,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 4601876630284040851, guid: 81c0b8f016b498f4985d3b041d5a90a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4653,6 +4663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367192579319871163, guid: 81c0b8f016b498f4985d3b041d5a90a5,
+        type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumSlip
+      value: 0.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

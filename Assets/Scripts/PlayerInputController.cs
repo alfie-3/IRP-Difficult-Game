@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.iOS;
 
 public class PlayerInputController : MonoBehaviour
 {
@@ -16,16 +17,28 @@ public class PlayerInputController : MonoBehaviour
     public Action<InputAction.CallbackContext> OnBrake = delegate { };
     public Action<InputAction.CallbackContext> OnHandbrake = delegate { };
 
-    public void Awake()
+    public void OnEnable()
     {
         _playerInput = new();
         _playerInput.Enable();
 
-        _playerInput.Default.Accelerate.performed += OnAccelerate;
-        _playerInput.Default.Brake.performed += OnBrake;
+        _playerInput.Default.Accelerate.performed += (ctx) => OnAccelerate.Invoke(ctx);
+        _playerInput.Default.Brake.performed += (ctx) => OnBrake.Invoke(ctx);
 
-        _playerInput.Default.Handbrake.started += OnHandbrake;
-        _playerInput.Default.Handbrake.canceled += OnHandbrake;
+        _playerInput.Default.Handbrake.started += (ctx) => OnHandbrake.Invoke(ctx); 
+        _playerInput.Default.Handbrake.canceled += (ctx) => OnHandbrake.Invoke(ctx);
+    }
+
+    public void OnDisable()
+    {
+        _playerInput.Dispose();
+    }
+
+
+
+    public void Log(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("ham");
     }
 
     public void Update()
