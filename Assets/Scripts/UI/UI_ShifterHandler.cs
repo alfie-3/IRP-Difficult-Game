@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class UI_ShifterHandler : MonoBehaviour
 {
-    [SerializeField] GearstickAnchor[] GearstickAnchors;
+    [SerializeField] GearshiftLine[] GearshiftLine;
 
-    [SerializeField] int currentAnchorIndex;
-    public GearstickAnchor CurrentAnchor => GearstickAnchors[currentAnchorIndex];
+    [SerializeField] int currentLineIndex;
+    public GearshiftLine CurrentLine => GearshiftLine[currentLineIndex];
 
     [SerializeField] CarInterface carInterface;
 
@@ -21,11 +21,20 @@ public class UI_ShifterHandler : MonoBehaviour
         float currentDistance;
         Vector3 currentPoint;
 
-        for (int i = 0; i < CurrentAnchor.ConnectedAnchors.Length; i++)
-        {
-            GearstickAnchor anchor = GearstickAnchors[CurrentAnchor.ConnectedAnchors[i]];
+        UI_GearshiftMovementConnector closestMovementConnector;
 
-            currentPoint = PointOnLine(anchor.Start.position, anchor.End.position, point);
+        if (Vector3.Distance(point, CurrentLine.End.position) > Vector3.Distance(point, CurrentLine.Start.position))
+        {
+            closestMovementConnector = CurrentLine.Start;
+        }
+        else
+        {
+            closestMovementConnector = CurrentLine.End;
+        }
+
+        for (int i = 0; i < closestMovementConnector.connectedPoints.Length; i++)
+        {
+            currentPoint = PointOnLine(closestMovementConnector.position, closestMovementConnector.connectedPoints[i].position, point);
 
             if (currentPoint == Vector3.zero)
             {
@@ -36,7 +45,7 @@ public class UI_ShifterHandler : MonoBehaviour
 
             if (currentDistance < closestDistance)
             {
-                selectedAnchorIndex = CurrentAnchor.ConnectedAnchors[i];
+                //selectedAnchorIndex = CurrentLine.ConnectedAnchors[i];
                 closestDistance = currentDistance;
                 closestPoint = currentPoint;
             }
@@ -49,8 +58,8 @@ public class UI_ShifterHandler : MonoBehaviour
 
         Debug.DrawLine(closestPoint, point, Color.green);
 
-        currentAnchorIndex = selectedAnchorIndex;
-        carInterface.ChangeGear(GearstickAnchors[currentAnchorIndex].Gear);
+        currentLineIndex = selectedAnchorIndex;
+        carInterface.ChangeGear(GearshiftLine[currentLineIndex].Gear);
         return closestPoint;
     }
 
@@ -68,30 +77,22 @@ public class UI_ShifterHandler : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        for (int i = 0; i < GearstickAnchors.Length; i++)
+        for (int i = 0; i < GearshiftLine.Length; i++)
         {
-            if (GearstickAnchors[i].Start == null || GearstickAnchors[i].End == null) continue;
+            if (GearshiftLine[i].Start == null || GearshiftLine[i].End == null) continue;
 
-            if (CurrentAnchor.ConnectedAnchors.Contains(i))
-            {
-                Gizmos.color = Color.green;
-            }
-            else
-            {
-                Gizmos.color = Color.red;
-            }
+            Gizmos.color = Color.green;
 
-            Gizmos.DrawLine(GearstickAnchors[i].Start.position, GearstickAnchors[i].End.position);
+            Gizmos.DrawLine(GearshiftLine[i].Start.position, GearshiftLine[i].End.position);
         }
     }
 }
 
 [System.Serializable]
-public struct GearstickAnchor
+public struct GearshiftLine
 {
-    [field: SerializeField] public RectTransform Start { get; private set; }
-    [field: SerializeField] public RectTransform End { get; private set; }
-    [field: SerializeField] public int[] ConnectedAnchors { get; private set; }
+    [field: SerializeField] public UI_GearshiftMovementConnector Start { get; private set; }
+    [field: SerializeField] public UI_GearshiftMovementConnector End { get; private set; }
     [field: Space]
     [field: SerializeField] public int Gear {  get; private set; }
 }

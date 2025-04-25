@@ -43,6 +43,8 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         Debug.DrawLine(worldPos, worldPos + (Vector3.back * 1000), Color.green);
 
+        Debug.Log(Vector3.Dot(transform.position, closestPoint));
+
         if (closestPoint != Vector3.zero)
             RectTransform.transform.position = closestPoint;
     }
@@ -50,10 +52,15 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         grabbed = false;
-        GearstickAnchor anchor = shifter.CurrentAnchor;
+        GearshiftLine anchor = shifter.CurrentLine;
 
-        targetPos = anchor.Start.GetComponent<UI_GearshiftMovementConnector>();
-
-        
+        if (Vector3.Distance(anchor.End.transform.position, transform.position) < Vector3.Distance(anchor.Start.transform.position, transform.position))
+        {
+            targetPos = anchor.End.GetComponent<UI_GearshiftMovementConnector>();
+        }
+        else
+        {
+            targetPos = anchor.Start.GetComponent<UI_GearshiftMovementConnector>();
+        }
     }
 }
