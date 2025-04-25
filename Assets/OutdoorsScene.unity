@@ -2784,34 +2784,45 @@ MonoBehaviour:
   - <Start>k__BackingField: {fileID: 1564648527}
     <End>k__BackingField: {fileID: 233213710}
     <ConnectedAnchors>k__BackingField: 000000000200000004000000050000000800000003000000
+    <Gear>k__BackingField: -1
   - <Start>k__BackingField: {fileID: 1529969879}
     <End>k__BackingField: {fileID: 589863699}
     <ConnectedAnchors>k__BackingField: 0100000008000000020000000300000000000000
+    <Gear>k__BackingField: 0
   - <Start>k__BackingField: {fileID: 1073990685}
     <End>k__BackingField: {fileID: 1564648527}
     <ConnectedAnchors>k__BackingField: 02000000000000000300000008000000
+    <Gear>k__BackingField: 1
   - <Start>k__BackingField: {fileID: 1508065655}
     <End>k__BackingField: {fileID: 1564648527}
     <ConnectedAnchors>k__BackingField: 03000000080000000000000002000000
+    <Gear>k__BackingField: 2
   - <Start>k__BackingField: {fileID: 23284060}
     <End>k__BackingField: {fileID: 233213710}
     <ConnectedAnchors>k__BackingField: 04000000050000000000000009000000
+    <Gear>k__BackingField: 3
   - <Start>k__BackingField: {fileID: 1307717788}
     <End>k__BackingField: {fileID: 233213710}
     <ConnectedAnchors>k__BackingField: 05000000000000000900000004000000
+    <Gear>k__BackingField: 4
   - <Start>k__BackingField: {fileID: 943990714}
     <End>k__BackingField: {fileID: 393962697}
     <ConnectedAnchors>k__BackingField: 060000000900000007000000
+    <Gear>k__BackingField: 5
   - <Start>k__BackingField: {fileID: 1894554943}
     <End>k__BackingField: {fileID: 393962697}
     <ConnectedAnchors>k__BackingField: 070000000600000009000000
+    <Gear>k__BackingField: 0
   - <Start>k__BackingField: {fileID: 589863699}
     <End>k__BackingField: {fileID: 1564648527}
     <ConnectedAnchors>k__BackingField: 0800000001000000000000000200000003000000
+    <Gear>k__BackingField: -1
   - <Start>k__BackingField: {fileID: 233213710}
     <End>k__BackingField: {fileID: 393962697}
     <ConnectedAnchors>k__BackingField: 0900000000000000040000000700000006000000
+    <Gear>k__BackingField: -1
   currentAnchorIndex: 3
+  carInterface: {fileID: 0}
 --- !u!1 &1156308356
 GameObject:
   m_ObjectHideFlags: 0
@@ -4923,6 +4934,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506613583052395458, guid: 81c0b8f016b498f4985d3b041d5a90a5,
+        type: 3}
+      propertyPath: Gears.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506613583052395458, guid: 81c0b8f016b498f4985d3b041d5a90a5,
+        type: 3}
+      propertyPath: Gears.Array.data[0].<Power>k__BackingField
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

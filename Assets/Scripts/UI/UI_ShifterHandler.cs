@@ -10,6 +10,8 @@ public class UI_ShifterHandler : MonoBehaviour
     [SerializeField] int currentAnchorIndex;
     GearstickAnchor currentAnchor => GearstickAnchors[currentAnchorIndex];
 
+    [SerializeField] CarInterface carInterface;
+
     public Vector3 GetClosestLinePoint(Vector3 point)
     {
         float closestDistance = float.PositiveInfinity;
@@ -48,6 +50,7 @@ public class UI_ShifterHandler : MonoBehaviour
         Debug.DrawLine(closestPoint, point, Color.green);
 
         currentAnchorIndex = selectedAnchorIndex;
+        carInterface.ChangeGear(GearstickAnchors[currentAnchorIndex].Gear);
         return closestPoint;
     }
 
@@ -89,4 +92,6 @@ public struct GearstickAnchor
     [field: SerializeField] public RectTransform Start { get; private set; }
     [field: SerializeField] public RectTransform End { get; private set; }
     [field: SerializeField] public int[] ConnectedAnchors { get; private set; }
+    [field: Space]
+    [field: SerializeField] public int Gear {  get; private set; }
 }

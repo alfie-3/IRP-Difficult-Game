@@ -24,6 +24,11 @@ public class CarInterface : MonoBehaviour
         wheelsController.Steer(Input.SteeringInput);
     }
 
+    public void ChangeGear(int newGear)
+    {
+        engine.ChangeGear(newGear);
+    }
+
     private void PressBrake(InputAction.CallbackContext context)
     {
         if (engine == null) return;

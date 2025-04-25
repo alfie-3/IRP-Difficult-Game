@@ -109,9 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f1a1947a820e744aaa5624d3aeb3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 1000
-  brakePower: 2000
   wheelsController: {fileID: 5748577111213742211}
+  brakePower: 2000
+  Gears:
+  - <Power>k__BackingField: -1000
+  - <Power>k__BackingField: 1000
+  neutral: 1
+  <CurrentGearIndex>k__BackingField: 0
 --- !u!114 &5748577111213742211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 370525943707700837, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: Drive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 370525943707700837, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
@@ -342,6 +346,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4601876630284040851}
     m_Modifications:
+    - target: {fileID: 370525943707700837, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
+        type: 3}
+      propertyPath: Drive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 370525943707700837, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: Steering
