@@ -5,36 +5,39 @@ using UnityEngine;
 
 public class UI_ShifterHandler : MonoBehaviour
 {
-    [SerializeField] GearshiftLine[] GearshiftLine;
-
-    [SerializeField] int currentLineIndex;
-    public GearshiftLine CurrentLine => GearshiftLine[currentLineIndex];
+    public UI_GearshiftMovementConnector startConnector;
+    public UI_GearshiftMovementConnector endConnector;
 
     [SerializeField] CarInterface carInterface;
+
+    [SerializeField] float splitDistance = 100f;
 
     public Vector3 GetClosestLinePoint(Vector3 point)
     {
         float closestDistance = float.PositiveInfinity;
         Vector3 closestPoint = Vector3.zero;
 
-        int selectedAnchorIndex = -1;
         float currentDistance;
         Vector3 currentPoint;
 
-        UI_GearshiftMovementConnector closestMovementConnector;
+        UI_GearshiftMovementConnector connectorSplit;
 
-        if (Vector3.Distance(point, CurrentLine.End.position) > Vector3.Distance(point, CurrentLine.Start.position))
+        if (Vector3.Distance(point, startConnector.position) < splitDistance)
         {
-            closestMovementConnector = CurrentLine.Start;
+            connectorSplit = startConnector;
+        }
+        else if (Vector3.Distance(point, endConnector.position) < splitDistance)
+        {
+            connectorSplit = endConnector;
         }
         else
         {
-            closestMovementConnector = CurrentLine.End;
+            return PointOnLine(startConnector.position, endConnector.position, point);
         }
 
-        for (int i = 0; i < closestMovementConnector.connectedPoints.Length; i++)
+        for (int i = 0; i < connectorSplit.connectedPoints.Length; i++)
         {
-            currentPoint = PointOnLine(closestMovementConnector.position, closestMovementConnector.connectedPoints[i].position, point);
+            currentPoint = PointOnLine(connectorSplit.position, connectorSplit.connectedPoints[i].position, point);
 
             if (currentPoint == Vector3.zero)
             {
@@ -45,22 +48,25 @@ public class UI_ShifterHandler : MonoBehaviour
 
             if (currentDistance < closestDistance)
             {
-                //selectedAnchorIndex = CurrentLine.ConnectedAnchors[i];
+                startConnector = connectorSplit;
+                endConnector = connectorSplit.connectedPoints[i];
+
                 closestDistance = currentDistance;
                 closestPoint = currentPoint;
             }
 
-            Debug.DrawLine(currentPoint, point, Color.red);
         }
 
 
-        if (selectedAnchorIndex == -1) return Vector3.zero;
-
         Debug.DrawLine(closestPoint, point, Color.green);
 
-        currentLineIndex = selectedAnchorIndex;
-        carInterface.ChangeGear(GearshiftLine[currentLineIndex].Gear);
+        //carInterface.ChangeGear(GearshiftLine[currentLineIndex].Gear);
         return closestPoint;
+    }
+
+    public void ChangeGear(int gear)
+    {
+        carInterface.ChangeGear(gear);
     }
 
     public Vector3 PointOnLine(Vector3 start, Vector3 end, Vector3 pnt, float minDistance = 0.01f)
@@ -73,18 +79,6 @@ public class UI_ShifterHandler : MonoBehaviour
         var d = Vector3.Dot(v, line);
         d = Mathf.Clamp(d, 0f, len);
         return start + line * d;
-    }
-
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < GearshiftLine.Length; i++)
-        {
-            if (GearshiftLine[i].Start == null || GearshiftLine[i].End == null) continue;
-
-            Gizmos.color = Color.green;
-
-            Gizmos.DrawLine(GearshiftLine[i].Start.position, GearshiftLine[i].End.position);
-        }
     }
 }
 

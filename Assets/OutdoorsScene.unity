@@ -173,6 +173,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 233213711}
+  <Gear>k__BackingField: 3
 --- !u!43 &60390491
 Mesh:
   m_ObjectHideFlags: 0
@@ -656,6 +657,7 @@ MonoBehaviour:
   - {fileID: 23284061}
   - {fileID: 1564648528}
   - {fileID: 393962698}
+  <Gear>k__BackingField: -1
 --- !u!43 &322745442
 Mesh:
   m_ObjectHideFlags: 0
@@ -1714,6 +1716,7 @@ MonoBehaviour:
   - {fileID: 943990715}
   - {fileID: 1894554944}
   - {fileID: 233213711}
+  <Gear>k__BackingField: -1
 --- !u!1 &403174041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,6 +2063,7 @@ MonoBehaviour:
   connectedPoints:
   - {fileID: 1529969880}
   - {fileID: 1564648528}
+  <Gear>k__BackingField: -1
 --- !u!43 &608939096
 Mesh:
   m_ObjectHideFlags: 0
@@ -2741,6 +2745,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 393962698}
+  <Gear>k__BackingField: 5
 --- !u!1 &1073990684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,6 +2797,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 1564648528}
+  <Gear>k__BackingField: 1
 --- !u!1 &1110976906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,49 +2889,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ac9419b7de6c743871a486e58c302b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GearstickAnchors:
-  - <Start>k__BackingField: {fileID: 1564648527}
-    <End>k__BackingField: {fileID: 233213710}
-    <ConnectedAnchors>k__BackingField: 000000000200000004000000050000000800000003000000
-    <Gear>k__BackingField: -1
-  - <Start>k__BackingField: {fileID: 1529969879}
-    <End>k__BackingField: {fileID: 589863699}
-    <ConnectedAnchors>k__BackingField: 010000000800000000000000
-    <Gear>k__BackingField: 0
-  - <Start>k__BackingField: {fileID: 1073990685}
-    <End>k__BackingField: {fileID: 1564648527}
-    <ConnectedAnchors>k__BackingField: 02000000000000000300000008000000
-    <Gear>k__BackingField: 1
-  - <Start>k__BackingField: {fileID: 1508065655}
-    <End>k__BackingField: {fileID: 1564648527}
-    <ConnectedAnchors>k__BackingField: 03000000080000000000000002000000
-    <Gear>k__BackingField: 2
-  - <Start>k__BackingField: {fileID: 23284060}
-    <End>k__BackingField: {fileID: 233213710}
-    <ConnectedAnchors>k__BackingField: 04000000050000000000000009000000
-    <Gear>k__BackingField: 3
-  - <Start>k__BackingField: {fileID: 1307717788}
-    <End>k__BackingField: {fileID: 233213710}
-    <ConnectedAnchors>k__BackingField: 05000000000000000900000004000000
-    <Gear>k__BackingField: 4
-  - <Start>k__BackingField: {fileID: 943990714}
-    <End>k__BackingField: {fileID: 393962697}
-    <ConnectedAnchors>k__BackingField: 060000000900000007000000
-    <Gear>k__BackingField: 5
-  - <Start>k__BackingField: {fileID: 1894554943}
-    <End>k__BackingField: {fileID: 393962697}
-    <ConnectedAnchors>k__BackingField: 070000000600000009000000
-    <Gear>k__BackingField: 0
-  - <Start>k__BackingField: {fileID: 589863699}
-    <End>k__BackingField: {fileID: 1564648527}
-    <ConnectedAnchors>k__BackingField: 0800000001000000000000000200000003000000
-    <Gear>k__BackingField: -1
-  - <Start>k__BackingField: {fileID: 393962697}
-    <End>k__BackingField: {fileID: 233213710}
-    <ConnectedAnchors>k__BackingField: 090000000000000004000000070000000600000005000000
-    <Gear>k__BackingField: -1
-  currentAnchorIndex: 1
+  startConnector: {fileID: 1564648528}
+  endConnector: {fileID: 233213711}
   carInterface: {fileID: 1825627311}
+  splitDistance: 50
 --- !u!1 &1136567495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,6 +2924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextPosition: {fileID: 0}
   connectedPoints: []
+  <Gear>k__BackingField: -1
 --- !u!224 &1136567497
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3065,6 +3033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shifter: {fileID: 1110976910}
+  moveSpeed: 800
 --- !u!1 &1307717787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3085,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 233213711}
+  <Gear>k__BackingField: 4
 --- !u!1 &1416845992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,6 +3480,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 1564648528}
+  <Gear>k__BackingField: 2
 --- !u!1 &1529969878
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,6 +3532,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 589863700}
+  <Gear>k__BackingField: 0
 --- !u!1 &1564648526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +3587,7 @@ MonoBehaviour:
   - {fileID: 1508065656}
   - {fileID: 589863700}
   - {fileID: 233213711}
+  <Gear>k__BackingField: -1
 --- !u!1 &1729255027
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,6 +4465,7 @@ MonoBehaviour:
   nextPosition: {fileID: 0}
   connectedPoints:
   - {fileID: 393962698}
+  <Gear>k__BackingField: 6
 --- !u!1001 &1897199451
 PrefabInstance:
   m_ObjectHideFlags: 0

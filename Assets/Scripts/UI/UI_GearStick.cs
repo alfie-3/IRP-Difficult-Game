@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] UI_ShifterHandler shifter;
+    [SerializeField] float moveSpeed = 800;
 
     bool grabbed = false;
 
@@ -13,17 +14,19 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     Vector2 offset;
 
     RectTransform MainCanvasRectTrasnform => (RectTransform)transform.root;
-    CanvasScaler MainCanvasScaler => transform.root.GetComponent<CanvasScaler>();
     RectTransform RectTransform => (RectTransform)transform;
 
     private void Update()
     {
         if (!grabbed && targetPos != null)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos.transform.position, 10 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPos.transform.position, moveSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, targetPos.transform.position) < 10f)
+            shifter.ChangeGear(targetPos.Gear);
+
+            if (Vector3.Distance(transform.position, targetPos.transform.position) < 5f)
             {
+                transform.position = targetPos.transform.position;
                 targetPos = targetPos.NextPosition;
             }
         }
@@ -43,8 +46,6 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         Debug.DrawLine(worldPos, worldPos + (Vector3.back * 1000), Color.green);
 
-        Debug.Log(Vector3.Dot(transform.position, closestPoint));
-
         if (closestPoint != Vector3.zero)
             RectTransform.transform.position = closestPoint;
     }
@@ -52,15 +53,14 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
         grabbed = false;
-        GearshiftLine anchor = shifter.CurrentLine;
 
-        if (Vector3.Distance(anchor.End.transform.position, transform.position) < Vector3.Distance(anchor.Start.transform.position, transform.position))
+        if (Vector3.Distance(shifter.endConnector.position, transform.position) < Vector3.Distance(shifter.startConnector.position, transform.position))
         {
-            targetPos = anchor.End.GetComponent<UI_GearshiftMovementConnector>();
+            targetPos = shifter.endConnector;
         }
         else
         {
-            targetPos = anchor.Start.GetComponent<UI_GearshiftMovementConnector>();
+            targetPos = shifter.startConnector;
         }
     }
 }

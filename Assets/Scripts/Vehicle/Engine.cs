@@ -29,7 +29,10 @@ public class Engine : MonoBehaviour
 
         neutral = newGear == -1;
 
-        if (neutral) return;
+        if (neutral)
+        {
+            wheelsController.Throttle(0);
+        }
 
         CurrentGearIndex = newGear;
     }
