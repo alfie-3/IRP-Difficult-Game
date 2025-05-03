@@ -10,6 +10,7 @@ public class PlayerInputController : MonoBehaviour
     PlayerInput _playerInput;
 
     [field: SerializeField] public float SteeringInput {  get; private set; }
+    [field: SerializeField] public float RockInput { get; private set; }
     [field: Space]
     [field: SerializeField] public Engine Engine {  get; private set; }
 
@@ -27,18 +28,13 @@ public class PlayerInputController : MonoBehaviour
 
         _playerInput.Default.Handbrake.started += (ctx) => OnHandbrake.Invoke(ctx); 
         _playerInput.Default.Handbrake.canceled += (ctx) => OnHandbrake.Invoke(ctx);
+
+        _playerInput.Default.Respawn.performed += (ctx) => RespawnHandler.RespawnPlayer(gameObject);
     }
 
     public void OnDisable()
     {
         _playerInput.Dispose();
-    }
-
-
-
-    public void Log(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("ham");
     }
 
     public void Update()
@@ -49,5 +45,6 @@ public class PlayerInputController : MonoBehaviour
     public void ReadInput()
     {
         SteeringInput = _playerInput.Default.Steer.ReadValue<float>();
+        RockInput = _playerInput.Default.Rock.ReadValue<float>();
     }
 }

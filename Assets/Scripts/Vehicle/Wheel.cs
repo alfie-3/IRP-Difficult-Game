@@ -10,8 +10,6 @@ public class Wheel : MonoBehaviour
     [field: SerializeField] public bool Drive;
     [field: SerializeField] public bool Steering;
 
-    Quaternion startingWheelOffset;
-
 
     void Update()
     {
@@ -48,6 +46,14 @@ public class Wheel : MonoBehaviour
         {
             wheelCollider.brakeTorque = 0;
         }
+    }
+
+    public void ResetVelocity()
+    {
+        wheelCollider.motorTorque = 0;
+        wheelCollider.brakeTorque = 0;
+
+        wheelCollider.rotationSpeed = 0;
     }
 
     public void ProvideSteering(float steeringAngle)

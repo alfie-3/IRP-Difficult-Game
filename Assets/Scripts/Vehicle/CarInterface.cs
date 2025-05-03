@@ -9,6 +9,7 @@ public class CarInterface : MonoBehaviour
     [SerializeField] PlayerInputController Input;
     [SerializeField] Engine engine;
     [SerializeField] WheelsController wheelsController;
+    [SerializeField] CarRocker carRocker;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class CarInterface : MonoBehaviour
     private void Update()
     {
         wheelsController.Steer(Input.SteeringInput);
+        carRocker.RockCar(Input.RockInput);
     }
 
     public void ChangeGear(int newGear)

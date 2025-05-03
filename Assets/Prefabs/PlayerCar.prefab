@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7223235640681971233}
   - component: {fileID: 8506613583052395458}
   - component: {fileID: 5748577111213742211}
+  - component: {fileID: 8684474788840994778}
   m_Layer: 3
   m_Name: PlayerCar
   m_TagString: Untagged
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SteeringInput>k__BackingField: 0
+  <RockInput>k__BackingField: 0
   <Engine>k__BackingField: {fileID: 8506613583052395458}
 --- !u!114 &7223235640681971233
 MonoBehaviour:
@@ -97,6 +99,7 @@ MonoBehaviour:
   Input: {fileID: 5703892864952902595}
   engine: {fileID: 8506613583052395458}
   wheelsController: {fileID: 5748577111213742211}
+  carRocker: {fileID: 0}
 --- !u!114 &8506613583052395458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +140,21 @@ MonoBehaviour:
   steeringSpeed: 1.5
   maxAngle: 35
   offset: 0
+--- !u!114 &8684474788840994778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845770544668476431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ed364067d194b428d7e8187f25c24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3088148118367162226}
+  rockAmount: 0.3
+  rockSpeed: 4
 --- !u!1 &9168802817000614515
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +481,7 @@ PrefabInstance:
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.66599953
+      value: 0.666
       objectReference: {fileID: 0}
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}

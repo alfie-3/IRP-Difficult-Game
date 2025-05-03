@@ -62,6 +62,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b79ece59-f2d5-492b-b8ce-8fd2750e6f80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rock"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""f1f07905-4ee4-4a1b-8c20-56649d1d9375"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +148,105 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Handbrake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""1ad6412c-c55e-440d-936c-bae169b4b8c2"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""7db09c4f-7bb6-47cc-a7eb-58a0839d94cb"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""44151aa9-7df6-4cbe-b45f-91c2e1f577f8"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""RockLeft"",
+                    ""id"": ""d77688be-aeb8-4f4a-b406-420dff67c3ec"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=-1)"",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""8b3cbbb0-178c-4957-bf71-3eeb43403736"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""2432b7af-6e3f-4910-99ac-618f9d1d47fd"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""RockRight"",
+                    ""id"": ""62dabec1-465b-4162-a277-45814f7efa9b"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""bc6ef958-0103-4f4f-a8f6-853042f26749"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""8ce17537-7cbc-412d-9a20-d1f9ea59cbdb"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rock"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -170,6 +287,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Default_Accelerate = m_Default.FindAction("Accelerate", throwIfNotFound: true);
         m_Default_Brake = m_Default.FindAction("Brake", throwIfNotFound: true);
         m_Default_Handbrake = m_Default.FindAction("Handbrake", throwIfNotFound: true);
+        m_Default_Respawn = m_Default.FindAction("Respawn", throwIfNotFound: true);
+        m_Default_Rock = m_Default.FindAction("Rock", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -235,6 +354,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Accelerate;
     private readonly InputAction m_Default_Brake;
     private readonly InputAction m_Default_Handbrake;
+    private readonly InputAction m_Default_Respawn;
+    private readonly InputAction m_Default_Rock;
     public struct DefaultActions
     {
         private @PlayerInput m_Wrapper;
@@ -243,6 +364,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Accelerate => m_Wrapper.m_Default_Accelerate;
         public InputAction @Brake => m_Wrapper.m_Default_Brake;
         public InputAction @Handbrake => m_Wrapper.m_Default_Handbrake;
+        public InputAction @Respawn => m_Wrapper.m_Default_Respawn;
+        public InputAction @Rock => m_Wrapper.m_Default_Rock;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -264,6 +387,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Handbrake.started += instance.OnHandbrake;
             @Handbrake.performed += instance.OnHandbrake;
             @Handbrake.canceled += instance.OnHandbrake;
+            @Respawn.started += instance.OnRespawn;
+            @Respawn.performed += instance.OnRespawn;
+            @Respawn.canceled += instance.OnRespawn;
+            @Rock.started += instance.OnRock;
+            @Rock.performed += instance.OnRock;
+            @Rock.canceled += instance.OnRock;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -280,6 +409,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Handbrake.started -= instance.OnHandbrake;
             @Handbrake.performed -= instance.OnHandbrake;
             @Handbrake.canceled -= instance.OnHandbrake;
+            @Respawn.started -= instance.OnRespawn;
+            @Respawn.performed -= instance.OnRespawn;
+            @Respawn.canceled -= instance.OnRespawn;
+            @Rock.started -= instance.OnRock;
+            @Rock.performed -= instance.OnRock;
+            @Rock.canceled -= instance.OnRock;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -321,5 +456,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnAccelerate(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnHandbrake(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
+        void OnRock(InputAction.CallbackContext context);
     }
 }
