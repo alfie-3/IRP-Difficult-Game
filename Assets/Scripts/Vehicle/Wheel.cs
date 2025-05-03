@@ -12,10 +12,6 @@ public class Wheel : MonoBehaviour
 
     Quaternion startingWheelOffset;
 
-    private void Awake()
-    {
-        startingWheelOffset = wheelMesh.transform.rotation;
-    }
 
     void Update()
     {
@@ -28,8 +24,6 @@ public class Wheel : MonoBehaviour
         Quaternion rotation;
 
         wheelCollider.GetWorldPose(out position, out rotation);
-
-        rotation *= startingWheelOffset;
 
         wheelMesh.transform.SetPositionAndRotation(position, rotation);
     }

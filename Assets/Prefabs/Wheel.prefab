@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4300857879302262726}
   - component: {fileID: 3346928948614524124}
   - component: {fileID: 1797468875978221260}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305527064762740433}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.13707, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1834021536055291301}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3346928948614524124
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305527064762740433}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2309305249758762421, guid: 11c6eadf940a4ff429aead393d6883cf, type: 3}
 --- !u!23 &1797468875978221260
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,6 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
   - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -93,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834021536055291301}
   - component: {fileID: 370525943707700837}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,8 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 4991212899740204653}
   wheelMesh: {fileID: 1305527064762740433}
-  Drive: 0
-  Steering: 0
+  Drive: 1
+  Steering: 1
 --- !u!1 &7798028520583396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4249575781260194301}
   - component: {fileID: 4991212899740204653}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,8 +174,8 @@ WheelCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7798028520583396808}
   serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.5
+  m_Center: {x: 0.01, y: 0.13, z: 0}
+  m_Radius: 0.33
   m_SuspensionSpring:
     spring: 35000
     damper: 1500
