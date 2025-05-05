@@ -183,70 +183,26 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""RockLeft"",
-                    ""id"": ""d77688be-aeb8-4f4a-b406-420dff67c3ec"",
-                    ""path"": ""OneModifier"",
+                    ""name"": """",
+                    ""id"": ""2bac12fe-4615-48dc-a130-51983bfa8bd5"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=-1)"",
                     ""groups"": """",
                     ""action"": ""Rock"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
-                    ""id"": ""8b3cbbb0-178c-4957-bf71-3eeb43403736"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rock"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""2432b7af-6e3f-4910-99ac-618f9d1d47fd"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rock"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""RockRight"",
-                    ""id"": ""62dabec1-465b-4162-a277-45814f7efa9b"",
-                    ""path"": ""OneModifier"",
+                    ""name"": """",
+                    ""id"": ""84e3ad92-5cbe-4ab1-92aa-a860faacd60a"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": ""Scale"",
                     ""groups"": """",
                     ""action"": ""Rock"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""bc6ef958-0103-4f4f-a8f6-853042f26749"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rock"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""8ce17537-7cbc-412d-9a20-d1f9ea59cbdb"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rock"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }

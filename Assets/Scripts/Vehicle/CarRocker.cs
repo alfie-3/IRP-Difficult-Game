@@ -12,8 +12,7 @@ public class CarRocker : MonoBehaviour
 
     public void RockCar(float input)
     {
-        float torque = rockAmount * input;
-        Debug.Log(torque);
+        float torque = rockAmount * -input;
         rb.AddTorque(transform.forward * torque, ForceMode.VelocityChange);
     }
 }

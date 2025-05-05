@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour
 {
-    [SerializeField] WheelCollider wheelCollider;
+    [field: SerializeField] public WheelCollider WheelCollider {  get; private set; }
     [SerializeField] GameObject wheelMesh;
     [Space]
     [field: SerializeField] public bool Drive;
@@ -21,44 +21,44 @@ public class Wheel : MonoBehaviour
         Vector3 position;
         Quaternion rotation;
 
-        wheelCollider.GetWorldPose(out position, out rotation);
+        WheelCollider.GetWorldPose(out position, out rotation);
 
         wheelMesh.transform.SetPositionAndRotation(position, rotation);
     }
 
     public void ProvideMotorTorque(float force)
     {
-        wheelCollider.motorTorque = force;
+        WheelCollider.motorTorque = force;
     }
 
     public void ProvideBrakeTorque(float force)
     {
-        wheelCollider.brakeTorque = force;
+        WheelCollider.brakeTorque = force;
     }
 
     public void ProvideHandbrake(bool value)
     {
         if (value)
         {
-            wheelCollider.brakeTorque = 2000;
+            WheelCollider.brakeTorque = 2000;
         }
         else
         {
-            wheelCollider.brakeTorque = 0;
+            WheelCollider.brakeTorque = 0;
         }
     }
 
     public void ResetVelocity()
     {
-        wheelCollider.motorTorque = 0;
-        wheelCollider.brakeTorque = 0;
+        WheelCollider.motorTorque = 0;
+        WheelCollider.brakeTorque = 0;
 
-        wheelCollider.rotationSpeed = 0;
+        WheelCollider.rotationSpeed = 0;
     }
 
     public void ProvideSteering(float steeringAngle)
     {
         float turnAngle = steeringAngle;
-        wheelCollider.steerAngle = turnAngle;
+        WheelCollider.steerAngle = turnAngle;
     }
 }

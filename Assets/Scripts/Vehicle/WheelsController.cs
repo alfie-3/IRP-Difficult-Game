@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WheelsController : MonoBehaviour
 {
-    [SerializeField] Wheel[] Wheels;
+    [field: SerializeField] public Wheel[] Wheels {  get; private set; }
     [Space]
     [SerializeField] bool handBrake;
     [Header("Steering")]
