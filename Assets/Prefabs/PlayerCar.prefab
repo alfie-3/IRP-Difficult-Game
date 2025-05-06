@@ -1009,15 +1009,15 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5304804440575107507}
   m_SourcePrefab: {fileID: 100100000, guid: 8b921257fc12ffc44a74da0f36eb40d8, type: 3}
---- !u!4 &169059807310088102 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6157397439929410373, guid: 8b921257fc12ffc44a74da0f36eb40d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2942004326968072989}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3413341645853523190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b921257fc12ffc44a74da0f36eb40d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2942004326968072989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5430480630327589357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2051134519565049104, guid: 8b921257fc12ffc44a74da0f36eb40d8,
     type: 3}
   m_PrefabInstance: {fileID: 2942004326968072989}
   m_PrefabAsset: {fileID: 0}
@@ -1040,11 +1040,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RootBones:
-  - {fileID: 169059807310088102}
+  - {fileID: 5430480630327589357}
   m_EndBones:
   - {fileID: 9062717152140674131}
   m_Material: {fileID: 11400000, guid: 6d383f9f311000242ab9f89dd9313ef3, type: 2}
-  m_StartDepth: 0
+  m_StartDepth: 1
   m_SiblingConstraints: 0
   m_ClosedSiblings: 0
   m_SiblingRotationConstraints: 0
@@ -1079,9 +1079,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_DeltaTimeMode: 0
-  m_ConstantDeltaTime: 0.07
-  m_Iterations: 10
-  m_SleepThreshold: 0.005
+  m_ConstantDeltaTime: 0.01
+  m_Iterations: 5
+  m_SleepThreshold: 0
   m_GravityAligner: {fileID: 0}
   m_Gravity: {x: 0, y: 0, z: 0}
   m_ForceModule: {fileID: 0}
