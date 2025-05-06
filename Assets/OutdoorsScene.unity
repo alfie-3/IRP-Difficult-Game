@@ -3222,7 +3222,7 @@ Rigidbody:
   m_Mass: 1600
   m_Drag: 0.18
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: -0.23, z: -0.15}
+  m_CenterOfMass: {x: 0, y: -0.8, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -6665,7 +6665,7 @@ PrefabInstance:
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45684907
+      value: 0.457
       objectReference: {fileID: 0}
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
@@ -6675,7 +6675,7 @@ PrefabInstance:
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.40251982
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
@@ -10154,7 +10154,7 @@ PrefabInstance:
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5159446
+      value: -0.5157937
       objectReference: {fileID: 0}
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
@@ -10164,7 +10164,7 @@ PrefabInstance:
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.40407288
+      value: -0.001446873
       objectReference: {fileID: 0}
     - target: {fileID: 1834021536055291301, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
