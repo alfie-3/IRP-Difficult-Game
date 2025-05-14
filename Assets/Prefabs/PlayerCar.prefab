@@ -688,11 +688,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4991212899740204653, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
-      propertyPath: m_Radius
-      value: 0.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4991212899740204653, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
-        type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 3000
       objectReference: {fileID: 0}
@@ -1330,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991212899740204653, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 7676784919960561209, guid: d75dd1c5716b1b74bbb976ea0a6921cb,
         type: 3}
