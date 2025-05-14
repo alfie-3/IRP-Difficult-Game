@@ -21,6 +21,8 @@ public class UI_GearStick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (!grabbed && targetPos != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos.transform.position, moveSpeed * Time.deltaTime);
+            Vector3 closestPoint = shifter.GetClosestLinePoint(transform.position);
+            Debug.DrawLine(transform.position, closestPoint, Color.green);
 
             shifter.ChangeGear(targetPos.Gear);
 
