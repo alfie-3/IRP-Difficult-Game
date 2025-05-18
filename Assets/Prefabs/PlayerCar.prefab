@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <SteeringInput>k__BackingField: 0
+  <ClutchInput>k__BackingField: 0
   <RockInput>k__BackingField: 0
   <Engine>k__BackingField: {fileID: 8506613583052395458}
 --- !u!114 &7223235640681971233
@@ -248,12 +249,61 @@ MonoBehaviour:
   wheelsController: {fileID: 5748577111213742211}
   <Running>k__BackingField: 0
   Throttle: 0
+  EngineRPM: 0
+  motorPower: 100
+  horsePowerToRPM:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.16493028
+      outSlope: 0.16493028
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.3315278
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.76955855
+      outSlope: 0.76955855
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.13888878
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.0333334
+      value: -0.007075472
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  idleRPM: 800
+  redLine: 6500
   brakePower: 2000
+  differentialRatio: 2
   Gears:
-  - <Power>k__BackingField: -1000
+  - <GearRatio>k__BackingField: -3
     <MaxSpeed>k__BackingField: 30
-  - <Power>k__BackingField: 1200
+  - <GearRatio>k__BackingField: 3
     <MaxSpeed>k__BackingField: 50
+  - <GearRatio>k__BackingField: 2.5
+    <MaxSpeed>k__BackingField: 50
+  - <GearRatio>k__BackingField: 2
+    <MaxSpeed>k__BackingField: 50
+  - <GearRatio>k__BackingField: 1.5
+    <MaxSpeed>k__BackingField: 50
+  - <GearRatio>k__BackingField: 1
+    <MaxSpeed>k__BackingField: 50
+  - <GearRatio>k__BackingField: 0.75
+    <MaxSpeed>k__BackingField: 50
+  clutch: 0
   neutral: 1
   <CurrentGearIndex>k__BackingField: 0
   Speed: 0

@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Clutch"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""96025941-5d3e-4fc9-a3a0-d2df7305adcd"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -203,6 +212,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Rock"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c864a778-eb62-49b5-aa2a-c7b9325b71ea"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Clutch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,6 +265,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Default_Handbrake = m_Default.FindAction("Handbrake", throwIfNotFound: true);
         m_Default_Respawn = m_Default.FindAction("Respawn", throwIfNotFound: true);
         m_Default_Rock = m_Default.FindAction("Rock", throwIfNotFound: true);
+        m_Default_Clutch = m_Default.FindAction("Clutch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,6 +333,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Handbrake;
     private readonly InputAction m_Default_Respawn;
     private readonly InputAction m_Default_Rock;
+    private readonly InputAction m_Default_Clutch;
     public struct DefaultActions
     {
         private @PlayerInput m_Wrapper;
@@ -322,6 +344,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Handbrake => m_Wrapper.m_Default_Handbrake;
         public InputAction @Respawn => m_Wrapper.m_Default_Respawn;
         public InputAction @Rock => m_Wrapper.m_Default_Rock;
+        public InputAction @Clutch => m_Wrapper.m_Default_Clutch;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -349,6 +372,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Rock.started += instance.OnRock;
             @Rock.performed += instance.OnRock;
             @Rock.canceled += instance.OnRock;
+            @Clutch.started += instance.OnClutch;
+            @Clutch.performed += instance.OnClutch;
+            @Clutch.canceled += instance.OnClutch;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -371,6 +397,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Rock.started -= instance.OnRock;
             @Rock.performed -= instance.OnRock;
             @Rock.canceled -= instance.OnRock;
+            @Clutch.started -= instance.OnClutch;
+            @Clutch.performed -= instance.OnClutch;
+            @Clutch.canceled -= instance.OnClutch;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -414,5 +443,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnHandbrake(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
         void OnRock(InputAction.CallbackContext context);
+        void OnClutch(InputAction.CallbackContext context);
     }
 }

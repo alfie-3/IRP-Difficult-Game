@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Clutch",
+                    "type": "PassThrough",
+                    "id": "96025941-5d3e-4fc9-a3a0-d2df7305adcd",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -179,6 +188,17 @@
                     "processors": "Scale",
                     "groups": "",
                     "action": "Rock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c864a778-eb62-49b5-aa2a-c7b9325b71ea",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "Scale",
+                    "groups": "KeyboardMouse",
+                    "action": "Clutch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

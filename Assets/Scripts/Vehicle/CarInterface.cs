@@ -16,12 +16,13 @@ public class CarInterface : MonoBehaviour
         if (Input == null) Input = GetComponent<PlayerInputController>();
 
         Input.OnAccelerate += PressAccelerator;
-        Input.OnBrake += PressBrake;
         Input.OnHandbrake += HandBrake;
     }
 
     private void Update()
     {
+        engine.UpdateClutch(Input.ClutchInput);
+        engine.Brake(Input.BreakInput);
         wheelsController.Steer(Input.SteeringInput);
         carRocker.RockCar(Input.RockInput);
     }

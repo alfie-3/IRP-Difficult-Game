@@ -52,4 +52,23 @@ public class WheelsController : MonoBehaviour
             wheel.ProvideSteering(currentSteeringAngle);
         }
     }
+
+    public float GetDriveWheelAverageRPM()
+    {
+        float totalRPM = 0;
+        int driveWheels = 0;
+
+        foreach (Wheel wheel in Wheels)
+        {
+            if (wheel.Drive)
+            {
+                totalRPM += wheel.WheelCollider.rpm;
+                driveWheels++;
+            }
+        }
+
+        if (driveWheels == 0) return 0;
+
+        return Mathf.Abs(totalRPM / driveWheels);
+    }
 }
