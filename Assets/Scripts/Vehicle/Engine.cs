@@ -1,40 +1,34 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Engine : MonoBehaviour
 {
     [SerializeField] WheelsController wheelsController;
     [field: Space]
-    [field: SerializeField] public bool Running {  get; private set; }
+    [field: SerializeField] public bool Running { get; private set; }
     [field: SerializeField] public float Throttle;
+    [field: SerializeField] public float Brake;
     [Space]
+    [SerializeField] AnimationCurve motorCurve;
+    [SerializeField] float engineRPM = 0;
+    [SerializeField] float motorPower = 1000f;
     [SerializeField] float brakePower = 1000f;
-    [Space]
-    [SerializeField] Gear[] Gears;
-    [SerializeField] bool neutral = true;
+
     [field: SerializeField] public int CurrentGearIndex { get; private set; }
 
     public Action<bool> OnChangeCarRunnng = delegate { };
 
-    public Gear CurrentGear
-    {
-        get
-        {
-            if (CurrentGearIndex == -1) return Gears[0];
-            if (CurrentGearIndex > Gears.Length - 1) return Gears[^1];
-
-            return Gears[CurrentGearIndex];
-        }
-    }
-
     public float Speed;
     public float SpeedClamped;
 
+    private void Start()
+    {
+        ToggleEngineRunning();
+    }
+
     private void Update()
     {
-        Speed = wheelsController.Wheels[0].WheelCollider.rpm * wheelsController.Wheels[0].WheelCollider.radius * 2f * Mathf.PI / 10;
+        Speed = wheelsController.GetDriveWheelAverageRPM() * wheelsController.Wheels[0].WheelCollider.radius * 2f * Mathf.PI / 10;
         SpeedClamped = Mathf.Lerp(SpeedClamped, Speed, Time.deltaTime);
 
         ApplyThrottle();
@@ -43,7 +37,7 @@ public class Engine : MonoBehaviour
     public float GetSpeedRatio()
     {
         var throttle = Mathf.Clamp(Throttle, 0.5f, 1);
-        return SpeedClamped * throttle / CurrentGear.MaxSpeed;
+        return SpeedClamped * throttle / motorPower;
     }
 
     public void ToggleEngineRunning()
@@ -53,40 +47,25 @@ public class Engine : MonoBehaviour
         OnChangeCarRunnng.Invoke(Running);
     }
 
-    public void ChangeGear(int newGear)
-    {
-        if (newGear > Gears.Length) return;
-
-        neutral = newGear == -1;
-
-        if (neutral)
-        {
-            wheelsController.Throttle(0);
-        }
-
-        CurrentGearIndex = newGear;
-    }
-
     public void ApplyThrottle()
     {
-        if (neutral || !Running || Speed > CurrentGear.MaxSpeed || Speed < -CurrentGear.MaxSpeed) 
+        float motorTarget = Throttle > Brake ? Throttle : -Brake;
+        engineRPM = Mathf.Lerp(engineRPM, motorTarget, Time.deltaTime * 3);
+        float curveValue = motorCurve.Evaluate(engineRPM / motorTarget);
+
+        Debug.Log(curveValue);
+
+        if (Throttle > 0.1f)
         {
-            wheelsController.Throttle(0);
+            wheelsController.Throttle(Throttle * motorPower * curveValue);
+            return;
+        }
+        else if (Brake > 0.1f)
+        {
+            wheelsController.Throttle(Brake * -motorPower * curveValue);
             return;
         }
 
-        wheelsController.Throttle(Throttle * CurrentGear.Power);
+        wheelsController.Throttle(Brake * -motorPower);
     }
-
-    public void Brake(float value)
-    {
-        wheelsController.Brake(value * brakePower);
-    }
-}
-
-[System.Serializable]
-public struct Gear
-{
-    [field: SerializeField] public float Power { get; private set; }
-    [field: SerializeField] public float MaxSpeed { get; private set; }
 }

@@ -35,8 +35,6 @@ public class WheelsController : MonoBehaviour
     {
         foreach (var wheel in Wheels)
         {
-            if (wheel.Steering) continue;
-
             handBrake = value;
             wheel.ProvideHandbrake(value);
         }
@@ -51,5 +49,23 @@ public class WheelsController : MonoBehaviour
             currentSteeringAngle = Mathf.Lerp(currentSteeringAngle, (steeringInput * maxAngle + offset), steeringSpeed * Time.deltaTime);
             wheel.ProvideSteering(currentSteeringAngle);
         }
+    }
+    public float GetDriveWheelAverageRPM()
+    {
+        float totalRPM = 0;
+        int driveWheels = 0;
+
+        foreach (Wheel wheel in Wheels)
+        {
+            if (wheel.Drive)
+            {
+                totalRPM += wheel.WheelCollider.rpm;
+                driveWheels++;
+            }
+        }
+
+        if (driveWheels == 0) return 0;
+
+        return totalRPM / driveWheels;
     }
 }

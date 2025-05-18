@@ -28,7 +28,7 @@ public class CarInterface : MonoBehaviour
 
     public void ChangeGear(int newGear)
     {
-        engine.ChangeGear(newGear);
+        //engine.ChangeGear(newGear);
     }
 
     private void PressBrake(InputAction.CallbackContext context)
@@ -37,7 +37,7 @@ public class CarInterface : MonoBehaviour
 
         float brakePower = context.ReadValue<float>();
 
-        engine.Brake(brakePower);
+        engine.Brake = brakePower;
     }
 
     private void HandBrake(InputAction.CallbackContext context)
@@ -60,6 +60,5 @@ public class CarInterface : MonoBehaviour
         float throttlePower = context.ReadValue<float>();
 
         engine.Throttle = throttlePower;
-        //
     }
 }
