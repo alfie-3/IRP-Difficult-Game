@@ -10,8 +10,10 @@ public class MovingPlatform : MonoBehaviour
     [Space]
     public Transform[] Waypoints;
     [SerializeField] float speed = 2;
+    [SerializeField] bool waitForPlayer;
     [SerializeField] float pauseDelay = 1;
     int currentTargetWaypoint;
+    bool running;
     bool reverse;
 
     float pauseTimer;
@@ -19,10 +21,23 @@ public class MovingPlatform : MonoBehaviour
     private void Start()
     {
         pauseTimer = pauseDelay;
+
+        if (!waitForPlayer)
+            running = true;
     }
 
-    private void Update()
+    private void OnTriggerEnter(Collider collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && waitForPlayer && !running)
+        {
+            running = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!running) return;
+
         if (pauseTimer > 0)
         {
             pauseTimer -= Time.deltaTime;
@@ -34,7 +49,12 @@ public class MovingPlatform : MonoBehaviour
             if (currentTargetWaypoint >= Waypoints.Length - 1)
                 reverse = true;
             else if (currentTargetWaypoint <= 0)
+            {
+                if (waitForPlayer)
+                    running = false;
+
                 reverse = false;
+            }
 
             if (reverse)
                 currentTargetWaypoint--;

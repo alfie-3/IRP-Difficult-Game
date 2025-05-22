@@ -53,8 +53,6 @@ public class Engine : MonoBehaviour
         engineRPM = Mathf.Lerp(engineRPM, motorTarget, Time.deltaTime * 3);
         float curveValue = motorCurve.Evaluate(engineRPM / motorTarget);
 
-        Debug.Log(curveValue);
-
         if (Throttle > 0.1f)
         {
             wheelsController.Throttle(Throttle * motorPower * curveValue);

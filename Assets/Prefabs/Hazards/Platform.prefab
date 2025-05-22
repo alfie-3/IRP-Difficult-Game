@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 8886513426179668868}
   - component: {fileID: 6939675404172818625}
   - component: {fileID: 8713044000441734744}
+  - component: {fileID: 5692714150431426687}
   m_Layer: 0
   m_Name: MovingPlatform
   m_TagString: Untagged
@@ -335,8 +336,30 @@ MonoBehaviour:
   Waypoints:
   - {fileID: 962294570298087797}
   - {fileID: 1225150723428160371}
-  speed: 8
+  speed: 4
+  waitForPlayer: 0
   pauseDelay: 1
+--- !u!65 &5692714150431426687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5372644484718113971}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.4, z: 1}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &6558937847129540329
 GameObject:
   m_ObjectHideFlags: 0
