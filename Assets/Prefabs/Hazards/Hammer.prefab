@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115893918832779028}
-  - component: {fileID: 6973008280816232356}
   m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
@@ -33,33 +32,6 @@ Transform:
   - {fileID: 585369672443140022}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6973008280816232356
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372702773405617385}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1122838732840366173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,15 +116,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 582ea13d961160d439d50d8b768ee0e5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8425283134732093238}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 582ea13d961160d439d50d8b768ee0e5,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3366373953688532020}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 582ea13d961160d439d50d8b768ee0e5,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 548006120076781535}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 582ea13d961160d439d50d8b768ee0e5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2029317228441340735}
   m_SourcePrefab: {fileID: 100100000, guid: 582ea13d961160d439d50d8b768ee0e5, type: 3}
 --- !u!1 &239946633099529484 stripped
 GameObject:
@@ -182,50 +154,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!59 &8425283134732093238
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239946633099529484}
-  m_ConnectedBody: {fileID: 6973008280816232356}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: 1}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -68.73841, y: 15.5373125, z: -67.915474}
-  serializedVersion: 2
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 1
-  m_Motor:
-    targetVelocity: 338.1
-    force: 2073.4
-    freeSpin: 1
-  m_UseLimits: 0
-  m_ExtendedLimits: 0
-  m_UseAcceleration: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!136 &3366373953688532020
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -270,6 +203,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.489267, y: 1.5162458, z: 1.649889}
   m_Center: {x: 0, y: -5.3839316, z: -0.010317564}
+--- !u!114 &2029317228441340735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239946633099529484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10953b999718324ab54389cd45c6de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axis: {x: 0, y: 0, z: 1}
+  spinSpeed: 2
 --- !u!4 &585369672443140022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 582ea13d961160d439d50d8b768ee0e5,

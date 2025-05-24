@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wheel : MonoBehaviour
@@ -10,10 +11,26 @@ public class Wheel : MonoBehaviour
     [field: SerializeField] public bool Drive;
     [field: SerializeField] public bool Steering;
 
+    float baseStiffness;
+    float baseSidewaysFriction;
+
+    private void Awake()
+    {
+        if (WheelCollider)
+        {
+            baseStiffness = WheelCollider.forwardFriction.stiffness;
+            baseSidewaysFriction = WheelCollider.sidewaysFriction.stiffness;
+        }
+    }
 
     void Update()
     {
         UpdateWheelMesh();
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateWheelPhysics();
     }
 
     public void UpdateWheelMesh()
@@ -24,6 +41,24 @@ public class Wheel : MonoBehaviour
         WheelCollider.GetWorldPose(out position, out rotation);
 
         wheelMesh.transform.SetPositionAndRotation(position, rotation);
+    }
+
+    public void UpdateWheelPhysics()
+    {
+        if (!WheelCollider) return;
+
+        WheelHit wheelHit;
+        if (WheelCollider.GetGroundHit(out wheelHit))
+        {
+            WheelFrictionCurve frictionCurve = WheelCollider.forwardFriction;
+            frictionCurve.stiffness = wheelHit.collider.material.staticFriction * baseStiffness;
+            WheelCollider.forwardFriction = frictionCurve;
+
+            WheelFrictionCurve sFriction = WheelCollider.sidewaysFriction;
+            sFriction.stiffness = wheelHit.collider.material.staticFriction * baseSidewaysFriction;
+            WheelCollider.sidewaysFriction = sFriction;
+
+        }
     }
 
     public void ProvideMotorTorque(float force)

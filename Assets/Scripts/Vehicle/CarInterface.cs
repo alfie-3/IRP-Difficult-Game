@@ -18,6 +18,7 @@ public class CarInterface : MonoBehaviour
         Input.OnAccelerate += PressAccelerator;
         Input.OnBrake += PressBrake;
         Input.OnHandbrake += HandBrake;
+
     }
 
     private void Update()

@@ -30,6 +30,7 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && waitForPlayer && !running)
         {
+            currentTargetWaypoint = 1;
             running = true;
         }
     }
@@ -65,6 +66,6 @@ public class MovingPlatform : MonoBehaviour
             pauseTimer = pauseDelay;
         }
 
-        rb.MovePosition(Vector3.MoveTowards(transform.position, Waypoints[currentTargetWaypoint].position, Time.deltaTime * speed));
+        rb.MovePosition(Vector3.MoveTowards(transform.position, Waypoints[currentTargetWaypoint].position, Time.fixedDeltaTime * speed));
     }
 }
