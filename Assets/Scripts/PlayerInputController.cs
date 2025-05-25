@@ -29,7 +29,7 @@ public class PlayerInputController : MonoBehaviour
         _playerInput.Default.Handbrake.started += (ctx) => OnHandbrake.Invoke(ctx); 
         _playerInput.Default.Handbrake.canceled += (ctx) => OnHandbrake.Invoke(ctx);
 
-        _playerInput.Default.Respawn.performed += (ctx) => RespawnHandler.RespawnPlayer(gameObject);
+        _playerInput.Default.Respawn.performed += (ctx) => RespawnHandler.RespawnPlayer(gameObject, true);
     }
 
     public void OnDisable()

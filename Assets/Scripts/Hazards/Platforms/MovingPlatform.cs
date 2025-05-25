@@ -68,4 +68,15 @@ public class MovingPlatform : MonoBehaviour
 
         rb.MovePosition(Vector3.MoveTowards(transform.position, Waypoints[currentTargetWaypoint].position, Time.fixedDeltaTime * speed));
     }
+
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < Waypoints.Length; i++)
+        {
+            if (i == 0) continue;
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(Waypoints[i].transform.position, Waypoints[i - 1].transform.position);
+        }
+    }
 }
