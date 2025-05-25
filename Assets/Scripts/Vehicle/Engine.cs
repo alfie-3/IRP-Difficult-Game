@@ -49,6 +49,8 @@ public class Engine : MonoBehaviour
 
     public void ApplyThrottle()
     {
+        if (!Running) return;
+
         float motorTarget = Throttle > Brake ? Throttle : -Brake;
         engineRPM = Mathf.Lerp(engineRPM, motorTarget, Time.deltaTime * 3);
         float curveValue = motorCurve.Evaluate(engineRPM / motorTarget);

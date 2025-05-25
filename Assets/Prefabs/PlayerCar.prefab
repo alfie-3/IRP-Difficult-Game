@@ -282,7 +282,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   engineRPM: 0
-  motorPower: 800
+  motorPower: 850
   brakePower: 2000
   <CurrentGearIndex>k__BackingField: 0
   Speed: 0

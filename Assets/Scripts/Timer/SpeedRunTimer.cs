@@ -21,4 +21,16 @@ public class SpeedRunTimer : MonoBehaviour
         if (stopwatch.IsRunning)
             OnTimerUpdated.Invoke(stopwatch.Elapsed);
     }
+
+    public static TimeSpan GetTimeSpan()
+    {
+        if (stopwatch != null)
+        {
+            return stopwatch.Elapsed;
+        }
+        else
+        {
+            return TimeSpan.Zero;
+        }
+    }
 }

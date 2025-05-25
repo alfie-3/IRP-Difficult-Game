@@ -19,6 +19,12 @@ public class CarInterface : MonoBehaviour
         Input.OnBrake += PressBrake;
         Input.OnHandbrake += HandBrake;
 
+        GameObject spawnCheckpoint = new GameObject();
+        spawnCheckpoint.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        spawnCheckpoint.name = "Spawn Checkpoint";
+        spawnCheckpoint.AddComponent<Checkpoint>();
+        Checkpoint.CurrentCheckpoint = spawnCheckpoint.GetComponent<Checkpoint>();
+
     }
 
     private void Update()
