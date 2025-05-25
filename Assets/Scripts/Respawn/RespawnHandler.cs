@@ -7,7 +7,23 @@ using UnityEngine.iOS;
 
 public class RespawnHandler : MonoBehaviour
 {
-    public static void RespawnPlayer(GameObject Player)
+    public static int Respawns = 0;
+    public static Action<int> OnRespawnCounterChanged = delegate { };
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void Init()
+    {
+        Respawns = 0;
+    }
+
+    private void Start()
+    {
+        int respawns = PlayerPrefs.GetInt("Respawns", 0);
+        Respawns = respawns;
+        OnRespawnCounterChanged.Invoke(Respawns);
+    }
+
+    public static void RespawnPlayer(GameObject Player, bool countAsRespawn = false)
     {
         Debug.Log("Respawning Player");
 
@@ -25,10 +41,29 @@ public class RespawnHandler : MonoBehaviour
         Player.transform.root.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Player.transform.root.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
-        if (Checkpoint.CurrentCheckpoint != null)
+        if (CheckpointManager.CurrentCheckpoint != null)
         {
-            Player.transform.root.GetComponent<Rigidbody>().MovePosition(Checkpoint.CurrentCheckpoint.transform.position);
-            Player.transform.root.GetComponent<Rigidbody>().MoveRotation(Checkpoint.CurrentCheckpoint.transform.rotation);
+            Player.transform.root.GetComponent<Rigidbody>().MovePosition(CheckpointManager.CurrentCheckpoint.transform.position);
+            Player.transform.root.GetComponent<Rigidbody>().MoveRotation(CheckpointManager.CurrentCheckpoint.transform.rotation);
         }
+
+        if (countAsRespawn)
+        {
+            Respawns++;
+            OnRespawnCounterChanged.Invoke(Respawns);
+        }
+    }
+
+    public static void ResetRespawns()
+    {
+        Respawns = 0;
+        PlayerPrefs.DeleteKey("Respawns");
+        OnRespawnCounterChanged.Invoke(Respawns);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Respawns", Respawns);
+        PlayerPrefs.Save();
     }
 }

@@ -42,9 +42,9 @@ public class CarAudioHandler : MonoBehaviour
 
         float speedRatio = Mathf.Abs(engine.GetSpeedRatio());
 
-        idleSource.volume = Mathf.Lerp(0.1f, idleMaxVolume, speedRatio);
+        idleSource.volume = Mathf.Lerp(0.1f, idleMaxVolume, speedRatio * (Time.deltaTime * 3));
 
-        runningSource.volume = Mathf.Lerp(0.15f, runningMaxVolume, speedRatio);
+        runningSource.volume = Mathf.Lerp(0.15f, runningMaxVolume, speedRatio * (Time.deltaTime * 3));
         runningSource.pitch = Mathf.Lerp(runningSource.pitch, Mathf.Lerp(0.3f, runningMaxPitch, speedRatio), Time.deltaTime);
     }
 

@@ -6,7 +6,7 @@ public class OutOfBoundsZone : MonoBehaviour
     {
         if (other.transform.root.gameObject.TryGetComponent(out PlayerInputController input))
         {
-            RespawnHandler.RespawnPlayer(other.transform.root.gameObject);
+            RespawnHandler.RespawnPlayer(other.transform.root.gameObject, true);
         }
     }
 }

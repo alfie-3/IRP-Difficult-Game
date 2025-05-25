@@ -16,6 +16,12 @@ public class SpeedRunTimerClock : MonoBehaviour
         timerText.enabled = false;
     }
 
+    private void OnDisable()
+    {
+        SpeedRunTimer.OnTimerUpdated -= UpdateTimerText;
+        SpeedRunTimer.OnTimerStarted -= StartTimer;
+    }
+
     private void StartTimer()
     {
         timerText.enabled = true;
@@ -23,6 +29,6 @@ public class SpeedRunTimerClock : MonoBehaviour
 
     private void UpdateTimerText(TimeSpan span)
     {
-        timerText.text = $"{span.Hours:00}:{span.Minutes:00}:{span.Seconds:00}:{span.Milliseconds:00}";
+        timerText.text = $"{span.Hours:00}:{span.Minutes:00}:{span.Seconds:00}:{span.Milliseconds:000}";
     }
 }

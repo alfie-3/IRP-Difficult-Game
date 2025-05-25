@@ -30,14 +30,17 @@ public class Engine : MonoBehaviour
     {
         Speed = wheelsController.GetDriveWheelAverageRPM() * wheelsController.Wheels[0].WheelCollider.radius * 2f * Mathf.PI / 10;
         SpeedClamped = Mathf.Lerp(SpeedClamped, Speed, Time.deltaTime);
+    }
 
+    private void FixedUpdate()
+    {
         ApplyThrottle();
     }
 
     public float GetSpeedRatio()
     {
         var throttle = Mathf.Clamp(Throttle, 0.5f, 1);
-        return SpeedClamped * throttle / motorPower;
+        return (SpeedClamped * (engineRPM * Throttle) / 1) * Time.fixedDeltaTime;
     }
 
     public void ToggleEngineRunning()
@@ -52,7 +55,7 @@ public class Engine : MonoBehaviour
         if (!Running) return;
 
         float motorTarget = Throttle > Brake ? Throttle : -Brake;
-        engineRPM = Mathf.Lerp(engineRPM, motorTarget, Time.deltaTime * 3);
+        engineRPM = Mathf.Lerp(engineRPM, motorTarget, Time.fixedDeltaTime * 3);
         float curveValue = motorCurve.Evaluate(engineRPM / motorTarget);
 
         if (Throttle > 0.1f)
